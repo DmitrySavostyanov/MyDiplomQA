@@ -67,7 +67,7 @@ public class SqlHelper {
                 return resultSet.getString("status");
             }
         } catch (SQLException err) {
-            System.out.println("Не получилось подключиться к базе данных");
+            //System.out.println("Не получилось подключиться к базе данных");
             err.printStackTrace();
         }
         return null;

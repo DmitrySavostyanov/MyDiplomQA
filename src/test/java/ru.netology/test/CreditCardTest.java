@@ -34,11 +34,11 @@ public class CreditCardTest {
         SqlHelper.cleanDataBase();
     }
 
-    @Test // Тест - ок/ нужно менять строку с БД
+    @Test // Тест  упал/ нужно менять строку с БД//  -- это я завел как Баг
     @DisplayName("2. Покупка по одобренной кредитной карте (Статус Approved)")
     void shouldPayByAppDC() {
-       // System.setProperty("url", "jdbc:postgresql://localhost:5432/app"); // url - ключ (имя переменной), "jdbc..../app"- значение переменной
-        System.setProperty("url", "jdbc:mysql://localhost:3306/app");
+        System.setProperty("url", "jdbc:postgresql://localhost:5432/app"); // url - ключ (имя переменной), "jdbc..../app"- значение переменной
+        //System.setProperty("url", "jdbc:mysql://localhost:3306/app");
         val creditCardPage = dashboardPage.payByCreditCard();
         val approvedCardInformation = DataHelper.getApprovedCardInfo();
         //System.out.println(approvedCardInformation.);
@@ -48,7 +48,7 @@ public class CreditCardTest {
         assertEquals("APPROVED", paymentStatus);
     }
 
-    @Test // тест упал //Форма выдает сообщение об успешной оплате по дебитовой/кредитной карте со статусом Declined -Баг
+    @Test // тест упал // Вопрос??? При ручном тесте - форма выдает ошибку- вопрос (не ясно пока что сломалось)
     @DisplayName("4. Покупка по отклоненной кредитной карте (Статус Declined)")
     void shouldPayNotByDecDC() {
         val creditCardPage = dashboardPage.payByCreditCard();
@@ -104,7 +104,7 @@ public class CreditCardTest {
         creditCardPage.messExpiredYearField();
     }
 
-    @Test // тест упал ---- /Форма не выдает ошибку при вводе невалидных значений в поле Владелец - Баг
+    @Test // тест упал ---- / Вопрос ???
     @DisplayName("16. Покупка по кредитной карте с указанием невалидных значений в поле Владелец")
     void shouldErrorInvalidOwner() {
         val creditCardPage = dashboardPage.payByCreditCard();;
